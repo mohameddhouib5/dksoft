@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %} {% block title %}Dksoft.tn{% endblock %} {% block
+stylesheets %}
+{{ parent() }}
+
+<link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+{%  endblock %}
+ {% block body %}
+<h1
+  style="font-size: 2.5rem;text-align: center;margin-top: 3rem;margin-bottom: -3rem;">
+  Discover our special prices
+</h1>
+<div class="row">
+  {% for article in articles %}
+  <div
+    class="col-md-5"
+    style="
+      flex: 0 0 41.666667%;
+      max-width: 37.666667%;
+      margin: auto;
+      margin-bottom: 20px;
+      margin-top: 100px;
+    "
+  >
+    <div class="article card">
+      <img class="card-img-top" src="{{ article.image }}" alt="" />
+      <div class="card-body">
+        <h2 class="card-title">{{ article.title }}</h2>
+        <div class="metadata">
+          Published on: {{ article.createdAt|date('d-m-Y') }}
+          <span class="badge badge-pill badge-info"">
+            {{ article.category.title }}
+          </span>
+        </div>
+        <p class="card-text">{{ article.content }}</p>
+        <a
+          class="btn btn-primary"
+          href="{{ path('show_article', { id: article.id }) }}"
+          >Read More</a
+        ><h2 style="position: absolute;margin-left: 21rem;margin-top:-2.2rem;"><span class="badge badge-lite">
+          {{ article.price }}
+        </span></h2>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

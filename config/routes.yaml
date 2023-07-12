@@ -1,0 +1,9 @@
+controllers:
+    resource: '../src/Controller/'
+    type: attribute
+
+edit_article:
+    path: /articles/{id}/edit
+    controller: App\Controller\DksoftController::edit
+    requirements:
+        id: '[^/]*'

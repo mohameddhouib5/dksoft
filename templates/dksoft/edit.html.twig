@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% form_theme editForm 'bootstrap_5_layout.html.twig' %}
+{% block title %}Editing {% endblock %}
+
+{% block body %}
+<br>
+    <h1 class="display-4 text-center">Service Edit</h1>
+    <br>
+     <div class="container">
+        <div class="row justify-content-center p-50">
+            <div class="col-md-10 ">
+    {% if article %}
+        {{ form_start(editForm) }}
+            {{ form_widget(editForm) }}
+            <button href="{{ path('edit_article', {id: article.id}) }}" class="btn btn-success">Update</button>
+        {{ form_end(editForm) }}
+    {% else %}
+        <p>No service found.</p>
+    {% endif %}
+     </div>
+        </div>
+    </div>
+{% endblock %}
